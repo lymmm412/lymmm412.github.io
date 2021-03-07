@@ -1,4 +1,4 @@
 # My LC Template
 
-[Union Find](/union-find/Union Find Template.md)
+[Union Find](https://github.com/lymmm412/lymmm412.github.io/blob/master/union-find/Union%20Find%20Template.md)
 
