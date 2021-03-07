@@ -1,1 +1,4 @@
-# lymmm412.github.io
+# My LC Template
+
+[Union Find](./union find/Union Find Template.md)
+
