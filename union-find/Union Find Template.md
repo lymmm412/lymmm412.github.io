@@ -57,3 +57,10 @@
     }
 ```
 
+## 一些变形
+
+- 计算总共几个union set
+
+  count初始化时不是总共element的个数，而是初始valid（符合题目要求）的数量
+  
+  (200. Number of Islands)
