@@ -64,3 +64,17 @@
   count初始化时不是总共element的个数，而是初始valid（符合题目要求）的数量
   
   (200. Number of Islands)
+  
+  - 计算每个set的大小（最大set的size）
+  
+  ```java
+  public int maxSize(){
+            int maxsize=0;
+            int[] count=new int[parent.length];
+            for(int i=0;i<parent.length;i++){
+                count[find(i)]++;
+                maxsize=Math.max(maxsize,count[parent[i]]);
+            }
+            return maxsize;
+        }
+  ```
