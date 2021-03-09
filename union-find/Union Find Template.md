@@ -65,16 +65,16 @@
   
   (200. Number of Islands)
   
-  - 计算每个set的大小（最大set的size）
-  
-  ```java
-  public int maxSize(){
-            int maxsize=0;
-            int[] count=new int[parent.length];
-            for(int i=0;i<parent.length;i++){
-                count[find(i)]++;
-                maxsize=Math.max(maxsize,count[parent[i]]);
-            }
-            return maxsize;
-        }
-  ```
+- 计算每个set的大小（最大set的size）
+
+```java
+public int maxSize(){
+    int maxsize=0;
+    int[] count=new int[parent.length];
+    for(int i=0;i<parent.length;i++){
+        count[find(i)]++;
+        maxsize=Math.max(maxsize,count[parent[i]]);
+    }
+    return maxsize;
+}
+```
