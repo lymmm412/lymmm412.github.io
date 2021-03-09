@@ -78,3 +78,7 @@ public int maxSize(){
     return maxsize;
 }
 ```
+
+### 一些总结
+
+union find适用于无向图？（323. Number of Connected Components in an Undirected Graph）
