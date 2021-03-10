@@ -1,4 +1,4 @@
-# graph_template
+# Graph Template
 
 ## Build Adjacant List
 
