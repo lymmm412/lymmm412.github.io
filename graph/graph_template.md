@@ -77,3 +77,21 @@ public int FloydWarshall(int n, int[][] edges) {
 - **相关题目**
 1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance
 
+## check if there's a cycle in the undirected graph
+
+```java
+ boolean hasCycle(List<List<Integer>> adjList, int u, boolean[] visited, int parent) {
+    visited[u] = true;
+
+    for (int i = 0; i < adjList.get(u).size(); i++) {
+        int v = adjList.get(u).get(i);
+
+        if ((visited[v] && parent != v) || (!visited[v] && hasCycle(adjList, v, visited, u)))
+            return true;
+    }
+
+    return false;
+}
+```
+- **相关题目**
+261. Graph Valid Tree
