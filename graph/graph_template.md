@@ -41,6 +41,39 @@ while(!pq.isEmpty()){
     }
 }
 ```
-
-## 相关题目：
+- **相关题目**
 1135. Connecting Cities With Minimum Cost
+
+## Floyd Warshall's shortest path
+[geeks for geeks](https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/) 
+
+The Floyd Warshall Algorithm is for solving the All Pairs Shortest Path problem. The problem is to find shortest distances between every pair of vertices in a given edge weighted directed Graph.
+
+We initialize the solution matrix same as the input graph matrix as a first step. Then we update the solution matrix by considering all vertices as an intermediate vertex. The idea is to one by one pick all vertices and updates all shortest paths which include the picked vertex as an intermediate vertex in the shortest path. When we pick vertex number k as an intermediate vertex, we already have considered vertices {0, 1, 2, .. k-1} as intermediate vertices. For every pair (i, j) of the source and destination vertices respectively, there are two possible cases. 
+
+(1) k is not an intermediate vertex in shortest path from i to j. We keep the value of dist[i][j] as it is. 
+
+(2) k is an intermediate vertex in shortest path from i to j. We update the value of dist[i][j] as dist[i][k] + dist[k][j] if dist[i][j] > dist[i][k] + dist[k][j]
+
+```java
+public int FloydWarshall(int n, int[][] edges) {
+    int INF = (int) 1e6; // INF = n * maxWeight = 100 * 10^4 = 10^6
+    int[][] dist = new int[n][n]; // dist[i][j] is the minimum distance from i to j
+    for (int i = 0; i < n; i++) {
+        Arrays.fill(dist[i], INF);
+        dist[i][i] = 0;
+    }
+    for (int[] edge : edges) {
+        int v1 = edge[0], v2 = edge[1], w = edge[2];
+        dist[v1][v2] = dist[v2][v1] = w;
+    }
+    // Floyd Warshall's shortest path algorithm
+    for (int k = 0; k < n; k++)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                dist[i][j] = Math.min(dist[i][j], dist[i][k] + dist[k][j]);
+ }
+ ```
+- **相关题目**
+1334. Find the City With the Smallest Number of Neighbors at a Threshold Distance
+
