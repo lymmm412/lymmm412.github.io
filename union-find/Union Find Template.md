@@ -79,6 +79,8 @@ public int maxSize(){
 }
 ```
 
-### 一些总结
+## 一些总结
 
 union find适用于无向图？（323. Number of Connected Components in an Undirected Graph）
+
+判断无向图是否有环（如果全部node都已经是同一个parent了，有任何多余一条edge都会形成环，所以用union find先梳理每个node的parent）684. Redundant Connection
