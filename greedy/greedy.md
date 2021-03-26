@@ -1,0 +1,2 @@
+- greedy的思想就是把所有可能都走一遍？\\
+  - [134. Gas Station](https://leetcode.com/problems/gas-station/) 
