@@ -9,3 +9,5 @@
 [Prefix Tree](https://github.com/lymmm412/lymmm412.github.io/blob/master/prefix-tree/prefix-tree.md)
 
 [Palindrome](https://github.com/lymmm412/lymmm412.github.io/blob/master/palindrome/palindrome.md)
+
+[Sorting](https://github.com/lymmm412/lymmm412.github.io/blob/master/sorting/sorting.md)
