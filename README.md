@@ -11,3 +11,5 @@
 [Palindrome](https://github.com/lymmm412/lymmm412.github.io/blob/master/palindrome/palindrome.md)
 
 [Sorting](https://github.com/lymmm412/lymmm412.github.io/blob/master/sorting/sorting.md)
+
+[Interval Questions](https://github.com/lymmm412/lymmm412.github.io/blob/master/interval%20question/interval%20questions%20collection.md)
