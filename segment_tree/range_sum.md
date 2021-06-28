@@ -18,6 +18,8 @@ public int sumRange(int left, int right) {
 }
 ```
 **segment tree part**
+
+**segment tree definition**
 ```java
 class SegmentTree{
     int start, end, sum;
@@ -28,7 +30,9 @@ class SegmentTree{
         this.sum=val;
     }
 }
-    
+```
+**build a tree**
+```java
 private SegmentTree build(int[] nums, int l, int r){
     if(l==r){
         return new SegmentTree(l,r,nums[l]);
@@ -41,7 +45,9 @@ private SegmentTree build(int[] nums, int l, int r){
     node.right=right;
     return node;
 }
-
+```
+**query a tree**
+```java
 private int query(SegmentTree node, int l, int r){
     int mid=node.start+(node.end-node.start)/2;
     if(l<=node.start&&r>=node.end){
@@ -54,5 +60,21 @@ private int query(SegmentTree node, int l, int r){
         return query(node.left,l,mid)+query(node.right,mid+1,r);
     }
     return 0;
+}
+```
+
+**update a tree**
+```java
+private void updateTree(SegmentTree node, int index, int value){
+    int mid=node.start+(node.end-node.start)/2;
+    if(node.left==node.right){
+        node.sum=value;
+        return;
+    }else if(index<=mid){
+        updateTree(node.left,index,value);
+    }else{
+        updateTree(node.right, index, value);
+    }
+    node.sum=node.left.sum+node.right.sum;
 }
 ```
