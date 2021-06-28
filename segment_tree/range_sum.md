@@ -1,5 +1,9 @@
 # Segment Tree -- Range Sum
 
+## References
+[Segment Tree References](https://leetcode.com/articles/a-recursive-approach-to-segment-trees-range-sum-queries-lazy-propagation/)
+
+## Examples
 [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
 
 
