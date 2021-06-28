@@ -17,3 +17,6 @@
 [Interval Questions](https://github.com/lymmm412/lymmm412.github.io/blob/master/interval%20question/interval%20questions%20collection.md)
 
 [Tree Traversal](https://github.com/lymmm412/lymmm412.github.io/blob/master/Tree%20Traversal/tree%20traversal%20template.md)
+
+**Segment Tree**
+- [Range Sum](https://github.com/lymmm412/lymmm412.github.io/blob/master/segment_tree/range_sum.md)
