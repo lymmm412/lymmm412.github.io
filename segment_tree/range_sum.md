@@ -6,6 +6,8 @@
 ## Examples
 [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/)
 
+[307. Range Sum Query - Mutable](https://leetcode.com/problems/range-sum-query-mutable/)
+
 
 **interface**
 ```java
