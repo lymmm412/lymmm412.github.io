@@ -179,4 +179,63 @@ public List<List<Integer>> levelOrder(TreeNode root) {
         dfs(level+1, node.left, res);
         dfs(level+1, node.right, res);
     }
-    ```
+  ```
+    
+ # Construct a tree from list
+ ## Construct Binary Tree from Inorder and Postorder Traversal
+ 
+ **Time: O(N), space: O(N)**
+ ```java
+ class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        if(inorder.length==0||postorder.length==0||inorder.length!=postorder.length){
+            return null;
+        }
+        
+        Map<Integer, Integer> map=new HashMap<>();
+        for(int i=0;i<inorder.length;i++){
+            map.put(inorder[i],i);
+        }
+        
+        return build(inorder, 0, inorder.length-1, postorder, 0, postorder.length-1, map);
+    }
+    
+    private TreeNode build(int[] inorder, int inLeft, int inRight, int[] postorder, int postLeft, int postRight, Map<Integer, Integer> map){
+        if(inLeft>inRight||postLeft>postRight){
+            return null;
+        }
+        TreeNode root=new TreeNode(postorder[postRight]);
+        int bound=map.get(postorder[postRight]);
+        TreeNode left=build(inorder,inLeft,bound-1,postorder,postLeft, postLeft+bound-1-inLeft,map);
+        TreeNode right=build(inorder,bound+1,inRight,postorder, postLeft+bound-inLeft,postRight-1,map);
+        root.left=left;
+        root.right=right;
+        return root;
+    }
+}
+```
+
+## Construct Binary Tree from Preorder and Inorder Traversal
+ **Time: O(N), space: O(N)**
+ ```java
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        Map<Integer, Integer> map=new HashMap<>();
+        for(int i=0;i<inorder.length;i++){
+            map.put(inorder[i],i);
+        }
+        return build(preorder, 0, preorder.length-1, inorder, 0, inorder.length-1, map);
+    }
+    
+    private TreeNode build(int[] preorder, int pStart, int pEnd, int[] inorder, int iStart, int iEnd, Map<Integer, Integer> map){
+        if(pStart>pEnd||iStart>iEnd){
+            return null;
+        }
+        TreeNode root=new TreeNode(preorder[pStart]);
+        int bound=map.get(preorder[pStart]);
+        root.left=build(preorder,pStart+1,pEnd, inorder, iStart, bound-1, map);
+        root.right=build(preorder, pStart+bound-iStart+1, pEnd, inorder, bound+1, iEnd, map);
+        return root;
+    }
+}
+```
