@@ -79,6 +79,7 @@ public class Solution {
             }
             cur = stack.peek();
             // to avoid revisit the right subtree
+            // cur.right!=pre
             if(cur.right!=null && cur.right!=pre){
                 cur = cur.right;
                 continue;
