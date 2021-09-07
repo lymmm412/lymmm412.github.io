@@ -286,3 +286,9 @@ public class QuickSort {
   }
 }
 ```
+
+## Other Sorting
+
+**峰谷峰谷峰谷型**
+- 1968. Array With Elements Not Equal to Average of Neighbors
+- 
