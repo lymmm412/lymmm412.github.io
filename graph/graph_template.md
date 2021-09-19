@@ -44,6 +44,61 @@ while(!pq.isEmpty()){
 - **相关题目**
 1135. Connecting Cities With Minimum Cost
 
+## Prim Algorithm
+For Prim's Algorithm we use a Priority Queue to get the edge with least cost, and a visited set to keep nodes that are added to the MST.
+
+Build the graph based on the edges.
+Randomly pick a node to start with(in this case, pick node with id 1).
+Pop the edge with least cost:
+if the edge does NOT exist in the MST(visited set), add its cost to total cost and add new edges starting from the end node to the queue.
+if the edge does exist in the MST(visted set)
+
+**The only difference is that instead of keeping a list of minimum total distance and updating it with
+```dist[v] = min(dist[v], weight(u,v) + dist[u]);```
+we keep a list of minimum cost for the current node and update it with
+```minCost[v] = min(minCost[v], cost(u,v));```**
+
+```java
+public int minimumCost(int n, int[][] connections) {
+        if(n==1){
+            return 0;
+        }
+        List<int[]>[] list=new ArrayList[n+1];
+        for(int[] conn:connections){
+            if(list[conn[0]]==null){
+                list[conn[0]]=new ArrayList<>();
+            }
+            list[conn[0]].add(new int[]{conn[1],conn[2]});
+            if(list[conn[1]]==null){
+                list[conn[1]]=new ArrayList<>();
+            }
+            list[conn[1]].add(new int[]{conn[0],conn[2]});
+        }
+        
+        PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)->(a[1]-b[1]));
+        boolean[] visited=new boolean[n+1];
+        int countVisited=0,cost=0;
+        pq.add(new int[]{1,0});
+        while(!pq.isEmpty()){
+            int[] curr=pq.poll();
+            if(visited[curr[0]]){
+                continue;
+            }
+            visited[curr[0]]=true;
+            cost+=curr[1];
+            countVisited++;
+            for(int[] next:list[curr[0]]){
+                if(!visited[next[0]]){
+                    pq.add(next);
+                }
+            }
+        }
+        return countVisited==n? cost:-1;
+    }
+```
+- **相关题目**
+1135. Connecting Cities With Minimum Cost
+
 ## Floyd Warshall's shortest path
 [geeks for geeks](https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/) 
 
