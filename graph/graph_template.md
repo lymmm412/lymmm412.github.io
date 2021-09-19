@@ -101,6 +101,78 @@ public int minimumCost(int n, int[][] connections) {
 - **相关题目**
 1135. Connecting Cities With Minimum Cost
 
+## Kruskal’s Minimum Spanning Tree Algorithm with Union Find
+Idea is simple:
+
+Sort edges to no-descresing order
+Pick the smallest edge that does not form a cycle
+Repeat until MST is formed and every node is connected.
+Implemented Union-Find with path comression to improve efficiency.
+
+```java
+class Solution {
+    class UnionFind{
+        int[] parent, rank;
+        int count;
+        
+        public UnionFind(int n){
+            parent=new int[n+1];
+            for(int i=0;i<=n;i++){
+                parent[i]=i;
+            }
+            rank=new int[n+1];
+            count=n;
+        }
+        
+        private void union(int x, int y){
+            int rootX=find(x);
+            int rootY=find(y);
+            if(rootX!=rootY){
+                if(rank[rootX]<rank[rootY]){
+                    parent[rootX]=rootY;
+                }else if(rank[rootY]<rank[rootX]){
+                    parent[rootY]=rootX;
+                }else{
+                    parent[rootY]=rootX;
+                    rank[rootX]++;
+                }
+                count--;
+            }
+        }
+        
+        private int find(int x){
+            if(parent[x]!=x){
+                parent[x]=find(parent[x]);
+            }
+            return parent[x];
+        }
+        
+        public boolean isConnected(int x, int y){
+            return find(x)==find(y);
+        }
+        
+        public int getCount(){
+            return count;
+        }
+    }
+    public int minimumCost(int n, int[][] connections) {
+        UnionFind uf=new UnionFind(n);
+        Arrays.sort(connections, (a,b)->(a[2]-b[2]));
+        int cost=0;
+        for(int[] conn:connections){
+            if(!uf.isConnected(conn[0], conn[1])){
+                uf.union(conn[0], conn[1]);
+                cost+=conn[2];
+            }
+        }
+        return uf.count==1? cost:-1;
+    }
+}
+```
+- **相关题目**
+1135. Connecting Cities With Minimum Cost
+
+
 ## Floyd Warshall's shortest path
 [geeks for geeks](https://www.geeksforgeeks.org/floyd-warshall-algorithm-dp-16/) 
 
