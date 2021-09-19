@@ -58,12 +58,14 @@ if the edge does exist in the MST(visted set)
 we keep a list of minimum cost for the current node and update it with
 ```minCost[v] = min(minCost[v], cost(u,v));```**
 
+**TIME: O((V+E)log(V))**
 ```java
 public int minimumCost(int n, int[][] connections) {
         if(n==1){
             return 0;
         }
         List<int[]>[] list=new ArrayList[n+1];
+	//log(E)
         for(int[] conn:connections){
             if(list[conn[0]]==null){
                 list[conn[0]]=new ArrayList<>();
